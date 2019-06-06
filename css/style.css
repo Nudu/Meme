@@ -1,0 +1,42 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+canvas {
+    display: flex;
+    outline: 2px solid black;
+    width: 400;
+    height: 400;
+    margin: 0 auto;
+}
+
+.file-upload{
+    display: flex;
+    margin: 0 auto;
+}
+
+.file-download{
+    display: flex;
+    justify-content: center;
+}
+
+.text-edit{
+    display: flex;
+    margin: 0 auto;
+}
+
+.social-share-btn {
+    background: #4267b2;
+    border: 1px solid #4267b2;
+    color: #fff;
+    cursor: pointer;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+    user-select: none;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+    display: inline-block;
+}
