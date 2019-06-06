@@ -13,25 +13,37 @@
 
     <img src="img/2.jpg" style="display: none">
 
-    <!-- <input class="file-upload" type="file" name="image" onchange="onFileInputChange(event)" />
-    <hr> -->
+    <input class="file-upload" type="file" name="image" onchange="onFileInputChange(event)" />
+    <hr>
     <br>
-    <input class="text-edit" placeholder="Top Text" type="text" onkeyup="drawText()" />
-    <br>
-    <canvas onmouseout="onStopDraw()" onmousedown="onStartDraw()" onmouseup="onStopDraw()" onmousemove="draw(event)" id="myCanvas"></canvas>
+    <div class="user-input">
+        <div class="fill-color">
+             choose fill color: 
+            <input type="color" value="#FFFFFF" id="fill" onchange="onChangeColor(this)">
+             choose outline color: 
+            <input type="color" value="#000000" id="outline" onchange="onChangeColor(this)">
 
-    <br>
-    <a class="file-download" href="#" onclick="downloadCanvas(this)" download="my-img.jpg">
-        Download as jpeg
-    </a>
+        </div>
+        <br>
+        <input class="text-edit" placeholder="Top Text" type="text" onkeyup="onTypeText()" />
+        <br>
+        <canvas onmouseout="onStopDraw()" onmousedown="onStartDraw()" onmouseup="onStopDraw()" onmousemove="draw(event)"
+            id="myCanvas"></canvas>
 
-    <br>
-    <div id="fb-root"></div>
-    <div class="share-container"></div>
+        <br>
+        <a class="file-download" href="#" onclick="downloadCanvas(this)" download="my-img.jpg">
+            Download as jpeg
+        </a>
 
 
-    <script src="js/meme-service.js"></script>
-    <script src="js/main.js"></script>
+
+        <br>
+        <div id="fb-root"></div>
+        <div class="share-container"></div>
+
+
+        <script src="js/meme-service.js"></script>
+        <script src="js/main.js"></script>
 
 </body>
 

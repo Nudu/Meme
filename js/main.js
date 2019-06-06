@@ -4,6 +4,8 @@ var ctx;
 
 let gIsMouseClicked = false;
 let gChoosenFont = '70px Impact'
+let gFillColor = "#FFFFFF";
+let gOutlineColor = "#000000"
 
 function init() {
     // debugger
@@ -29,15 +31,15 @@ function onStopDraw() {
 
 function draw(ev) {
     const { offsetX, offsetY } = ev
-    drawTextz('text' , offsetX, offsetY)
+    dragText('text' , offsetX, offsetY)
 }
 
-function drawTextz(txt, x, y) {
+function dragText(txt, x, y) {
     if (gIsMouseClicked) {
         hardCodePic()
         var txt = document.querySelector('.text-edit').value
-        ctx.fillStyle = "#FFFFFF"
-        ctx.strokeStyle = 'black'
+        ctx.fillStyle = gFillColor
+        ctx.strokeStyle = gOutlineColor
         ctx.textBaseline = 'middle';
         ctx.textAlign = "center";
         ctx.lineWidth = 2;
@@ -48,11 +50,11 @@ function drawTextz(txt, x, y) {
     }
 }
 
-function drawText() {
+function onTypeText() {
     hardCodePic()
     let txt = document.querySelector('.text-edit').value
-    ctx.fillStyle = "#FFFFFF"
-    ctx.strokeStyle = 'black'
+    ctx.fillStyle = gFillColor
+    ctx.strokeStyle = gOutlineColor
     ctx.textBaseline = 'middle';
     ctx.textAlign = "center";
     ctx.lineWidth = 2;
@@ -82,6 +84,16 @@ function downloadCanvas(elLink) {
     const data = canvas.toDataURL()
     elLink.href = data
     elLink.download = 'my-img.jpg'
+}
+
+function onChangeColor(element) {
+    console.log(element);
+    if (element.id === 'fill') {
+        gFillColor = element.value;
+    } else if (element.id === 'outline') {
+        gOutlineColor = element.value;
+    }
+    drawText()
 }
 
 

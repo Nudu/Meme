@@ -11,6 +11,11 @@ canvas {
     margin: 0 auto;
 }
 
+.fill-color {
+    display: flex;
+    justify-content: center;
+}
+
 .file-upload{
     display: flex;
     margin: 0 auto;
