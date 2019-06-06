@@ -93,7 +93,7 @@ function onChangeColor(element) {
     } else if (element.id === 'outline') {
         gOutlineColor = element.value;
     }
-    drawText()
+    onTypeText()
 }
 
 
