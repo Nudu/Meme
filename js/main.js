@@ -3,6 +3,7 @@ var canvas;
 var ctx;
 
 let gIsMouseClicked = false;
+let gChoosenFont = '70px Impact'
 
 function init() {
     // debugger
@@ -28,7 +29,7 @@ function onStopDraw() {
 
 function draw(ev) {
     const { offsetX, offsetY } = ev
-    drawTextz('test', offsetX, offsetY)
+    drawTextz('text' , offsetX, offsetY)
 }
 
 function drawTextz(txt, x, y) {
@@ -40,9 +41,10 @@ function drawTextz(txt, x, y) {
         ctx.textBaseline = 'middle';
         ctx.textAlign = "center";
         ctx.lineWidth = 2;
-        ctx.font = "70px Impact";
+        ctx.font = gChoosenFont;
         ctx.fillText(txt, x, y);
         ctx.strokeText(txt, x, y);
+        gText1Location = [x, y]
     }
 }
 
@@ -54,9 +56,15 @@ function drawText() {
     ctx.textBaseline = 'middle';
     ctx.textAlign = "center";
     ctx.lineWidth = 2;
-    ctx.font = "70px Impact";
-    ctx.fillText(txt, canvas.width / 2, canvas.height / 6);
-    ctx.strokeText(txt, canvas.width / 2, canvas.height / 6);
+    ctx.font = gChoosenFont;
+    if (gText1Location) {
+        ctx.fillText(txt, gText1Location[0],gText1Location[1]);
+        ctx.strokeText(txt, gText1Location[0],gText1Location[1]);
+    }
+    else {
+        ctx.fillText(txt, canvas.width / 2, canvas.height / 6);
+        ctx.strokeText(txt, canvas.width / 2, canvas.height / 6);
+    }
 }
 
 
