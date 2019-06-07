@@ -16,6 +16,8 @@ function init() {
 
 function onFileInputChange(ev) {
     handleImageFromInput(ev, renderCanvas)
+    // ctx.fillText(gMeme.txts[0].line, gText1Location[0], gText1Location[1]);
+    // ctx.strokeText(gMeme.txts[0].line, gText1Location[0], gText1Location[1]);
 }
 
 function hardCodePic() {
@@ -54,7 +56,7 @@ function draw(ev) {
 function dragText(txt, x, y) {
     if (gIsMouseClicked) {
         hardCodePic()
-        var txt = document.querySelector('.text-edit').value
+        var txt = gMeme.txts[0].line
         ctx.fillStyle = gMeme.txts[0].color
         ctx.strokeStyle = gMeme.txts[0].bordercolor
         ctx.textBaseline = 'middle';

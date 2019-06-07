@@ -16,17 +16,17 @@ canvas {
     justify-content: center;
 }
 
-.file-upload{
+.file-upload {
     display: flex;
     margin: 0 auto;
 }
 
-.file-download{
+.file-download {
     display: flex;
     justify-content: center;
 }
 
-.text-edit{
+.text-edit {
     display: flex;
     margin: 0 auto;
 }
@@ -44,4 +44,43 @@ canvas {
     border-radius: 3px;
     text-decoration: none;
     display: inline-block;
+}
+
+@media (max-width: 760px) {
+    body {
+        background-color: lightsalmon;
+    }
+    /* .first-paragraph {
+        margin: 0 0 1.5625rem;
+    }
+    .second-paragraph {
+        margin: 0 0 2.25rem;
+    }
+*/
+}
+
+@media (min-width: 760px) {
+    body {
+        background-color: lightblue;
+    }
+    /* .artical img {
+        margin-right: 5rem;
+    } */
+}
+
+@media (min-width: 1060px) {
+    body {
+        background-color: yellow;
+    }
+    /* .container {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .content>h2 {
+        margin: 0 0 2.5625rem;
+    } */
+}
+
+.hide {
+    display: none;
 }
