@@ -19,14 +19,14 @@
     <br>
     <div class="user-input">
         <div class="fill-color">
-             choose fill color: 
+            choose fill color:
             <input type="color" value="#FFFFFF" id="fill" onchange="onChangeColor(this)">
-             choose outline color: 
+            choose outline color:
             <input type="color" value="#000000" id="outline" onchange="onChangeColor(this)">
-
+            <input class="text-add" value="Add Line" type="button" onclick="onAddLine()" />
         </div>
         <br>
-        <input class="text-edit" placeholder="Top Text" type="text" onkeyup="onTypeText()" />
+        <input class="text-edit" placeholder="Enter Text" type="text" onkeyup="onTypeText()" />
         <br>
         <canvas onmouseout="onStopDraw()" onmousedown="onStartDraw()" onmouseup="onStopDraw()" onmousemove="draw(event)"
             id="myCanvas"></canvas>

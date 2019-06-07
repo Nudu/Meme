@@ -6,20 +6,37 @@ let gIsMouseClicked = false;
 let gChoosenFont = '70px Impact'
 let gFillColor = "#FFFFFF";
 let gOutlineColor = "#000000"
+let gSelectedImgSrc = gImgs[0].url
 
 function init() {
-    // debugger
     canvas = document.getElementById('myCanvas');
     ctx = canvas.getContext('2d');
     hardCodePic()
 }
 
+function onFileInputChange(ev) {
+    handleImageFromInput(ev, renderCanvas)
+}
+
 function hardCodePic() {
     var image = new Image();
-    // image.origin = 'anonymous';
-    image.src = 'img/2.jpg';
+    // image.src = 'img/2.jpg';
+    image.src = gSelectedImgSrc
     image.crossOrigin = 'anonymous';
     renderCanvas(image)
+}
+
+//UPLOAD IMG WITH INPUT FILE
+function handleImageFromInput(ev, onImageReady) {
+    // document.querySelector('.share-container').innerHTML = ''
+    var reader = new FileReader();
+    reader.onload = function (event) {
+        var img = new Image();
+        img.onload = onImageReady.bind(null, img)
+        img.src = event.target.result;
+        gSelectedImgSrc = img.src
+    }
+    reader.readAsDataURL(ev.target.files[0]);
 }
 
 function onStartDraw() {
@@ -31,17 +48,17 @@ function onStopDraw() {
 
 function draw(ev) {
     const { offsetX, offsetY } = ev
-    dragText('text' , offsetX, offsetY)
+    dragText('text', offsetX, offsetY)
 }
 
 function dragText(txt, x, y) {
     if (gIsMouseClicked) {
         hardCodePic()
         var txt = document.querySelector('.text-edit').value
-        ctx.fillStyle = gFillColor
-        ctx.strokeStyle = gOutlineColor
+        ctx.fillStyle = gMeme.txts[0].color
+        ctx.strokeStyle = gMeme.txts[0].bordercolor
         ctx.textBaseline = 'middle';
-        ctx.textAlign = "center";
+        ctx.textAlign = gMeme.txts[0].align;
         ctx.lineWidth = 2;
         ctx.font = gChoosenFont;
         ctx.fillText(txt, x, y);
@@ -53,15 +70,16 @@ function dragText(txt, x, y) {
 function onTypeText() {
     hardCodePic()
     let txt = document.querySelector('.text-edit').value
-    ctx.fillStyle = gFillColor
-    ctx.strokeStyle = gOutlineColor
+    gMeme.txts[0].line = txt
+    ctx.fillStyle = gMeme.txts[0].color
+    ctx.strokeStyle = gMeme.txts[0].bordercolor
     ctx.textBaseline = 'middle';
     ctx.textAlign = "center";
     ctx.lineWidth = 2;
     ctx.font = gChoosenFont;
     if (gText1Location) {
-        ctx.fillText(txt, gText1Location[0],gText1Location[1]);
-        ctx.strokeText(txt, gText1Location[0],gText1Location[1]);
+        ctx.fillText(txt, gText1Location[0], gText1Location[1]);
+        ctx.strokeText(txt, gText1Location[0], gText1Location[1]);
     }
     else {
         ctx.fillText(txt, canvas.width / 2, canvas.height / 6);
@@ -76,9 +94,6 @@ function renderCanvas(img) {
     ctx.drawImage(img, 0, 0);
 }
 
-function onFileInputChange(ev) {
-    handleImageFromInput(ev, renderCanvas)
-}
 
 function downloadCanvas(elLink) {
     const data = canvas.toDataURL()
@@ -87,24 +102,10 @@ function downloadCanvas(elLink) {
 }
 
 function onChangeColor(element) {
-    console.log(element);
     if (element.id === 'fill') {
-        gFillColor = element.value;
+        gMeme.txts[0].color = element.value;
     } else if (element.id === 'outline') {
-        gOutlineColor = element.value;
+        gMeme.txts[0].bordercolor = element.value;
     }
     onTypeText()
-}
-
-
-//UPLOAD IMG WITH INPUT FILE
-function handleImageFromInput(ev, onImageReady) {
-    // document.querySelector('.share-container').innerHTML = ''
-    var reader = new FileReader();
-    reader.onload = function (event) {
-        var img = new Image();
-        img.onload = onImageReady.bind(null, img)
-        img.src = event.target.result;
-    }
-    reader.readAsDataURL(ev.target.files[0]);
 }
