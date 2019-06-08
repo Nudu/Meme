@@ -26,7 +26,10 @@
             <input class="text-add" value="Add Line" type="button" onclick="onAddLine()" />
         </div>
         <br>
-        <input class="text-edit" placeholder="Enter Text" type="text" onkeyup="onTypeText()" />
+        <div class="text-edit">
+            <input class="text-edit-top" placeholder="Top Text" type="text" onkeyup="onTypeText(this)" />
+            <input class="text-edit-buttom" placeholder="Buttom Text" type="text" onkeyup="onTypeText(this)" />
+        </div>
         <br>
         <canvas onmouseout="onStopDraw()" onmousedown="onStartDraw()" onmouseup="onStopDraw()" onmousemove="draw(event)"
             id="myCanvas"></canvas>

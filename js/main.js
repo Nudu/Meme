@@ -69,23 +69,50 @@ function dragText(txt, x, y) {
     }
 }
 
-function onTypeText() {
-    hardCodePic()
-    let txt = document.querySelector('.text-edit').value
-    gMeme.txts[0].line = txt
-    ctx.fillStyle = gMeme.txts[0].color
-    ctx.strokeStyle = gMeme.txts[0].bordercolor
-    ctx.textBaseline = 'middle';
-    ctx.textAlign = "center";
-    ctx.lineWidth = 2;
-    ctx.font = gChoosenFont;
-    if (gText1Location) {
-        ctx.fillText(txt, gText1Location[0], gText1Location[1]);
-        ctx.strokeText(txt, gText1Location[0], gText1Location[1]);
+function onTypeText(text) {
+    if (text.className === 'text-edit-top') {
+        hardCodePic()
+        let txt = text.value
+        gMeme.txts[0].line = txt
+        ctx.fillStyle = gMeme.txts[0].color
+        ctx.strokeStyle = gMeme.txts[0].bordercolor
+        ctx.textBaseline = 'middle';
+        ctx.textAlign = "center";
+        ctx.lineWidth = 2;
+        ctx.font = gChoosenFont;
+        if (gText1Location) {
+            ctx.fillText(gMeme.txts[0].line, gText1Location[0], gText1Location[1]);
+            ctx.strokeText(gMeme.txts[0].line, gText1Location[0], gText1Location[1]);
+        }
+        else {
+            ctx.fillText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
+            ctx.strokeText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
+            ctx.fillText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height/9));
+            ctx.strokeText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height/9));
+        }
     }
-    else {
-        ctx.fillText(txt, canvas.width / 2, canvas.height / 6);
-        ctx.strokeText(txt, canvas.width / 2, canvas.height / 6);
+    else if (text.className === 'text-edit-buttom') {
+        // console.log('Bot Edited!')
+        hardCodePic()
+        let txt = text.value
+        gMeme.txts[1].line = txt
+        ctx.fillStyle = gMeme.txts[1].color
+        ctx.strokeStyle = gMeme.txts[1].bordercolor
+        ctx.textBaseline = 'middle';
+        ctx.textAlign = "center";
+        ctx.lineWidth = 2;
+        ctx.font = gChoosenFont;
+        if (gText2Location) {
+            ctx.fillText(gMeme.txts[1].line, gText2Location[0], gText2Location[1]);
+            ctx.strokeText(gMeme.txts[1].line, gText2Location[0], gText2Location[1]);
+        }
+        
+        else {
+            ctx.fillText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
+            ctx.strokeText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
+            ctx.fillText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height/9));
+            ctx.strokeText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height/9));
+        }
     }
 }
 

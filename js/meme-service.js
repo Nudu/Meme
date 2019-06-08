@@ -2,18 +2,29 @@
 // var gKeywords = { 'happy': 12, 'funny puk': 1 }
 
 var gText1Location;
+var gText2Location;
 
 var gImgs = [{ id: 1, url: 'img/2.jpg', keywords: ['happy'] }];
 var gMeme = {
     selectedImgId: 0,
     txts: [
         {
-            line: 'I never eat Falafel',
-            size: 20,
+            line: '',
+            linesize: 2,
             align: 'center',
             color: '#FFFFFF',
             bordercolor: '#000000',
-            font: 'red',
+            font: 'Impact',
+            fontSize: '70px',
+        },
+        {
+            line: '',
+            linesize: 2,
+            align: 'center',
+            color: '#FFFFFF',
+            bordercolor: '#000000',
+            font: 'Impact',
+            fontSize: '70px',
         }
     ]
 }
