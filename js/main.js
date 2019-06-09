@@ -66,8 +66,13 @@ function dragText(txt, x, y) {
         ctx.fillText(txt, x, y);
         ctx.strokeText(txt, x, y);
         gText1Location = [x, y]
+        // ctx.fillText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
+        // ctx.strokeText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
+        ctx.fillText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height / 9));
+        ctx.strokeText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height / 9));
     }
 }
+
 
 function onTypeText(text) {
     if (text.className === 'text-edit-top') {
@@ -87,8 +92,8 @@ function onTypeText(text) {
         else {
             ctx.fillText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
             ctx.strokeText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
-            ctx.fillText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height/9));
-            ctx.strokeText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height/9));
+            ctx.fillText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height / 9));
+            ctx.strokeText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height / 9));
         }
     }
     else if (text.className === 'text-edit-buttom') {
@@ -106,12 +111,12 @@ function onTypeText(text) {
             ctx.fillText(gMeme.txts[1].line, gText2Location[0], gText2Location[1]);
             ctx.strokeText(gMeme.txts[1].line, gText2Location[0], gText2Location[1]);
         }
-        
+
         else {
             ctx.fillText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
             ctx.strokeText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
-            ctx.fillText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height/9));
-            ctx.strokeText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height/9));
+            ctx.fillText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height / 9));
+            ctx.strokeText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height / 9));
         }
     }
 }
