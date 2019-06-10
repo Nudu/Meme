@@ -32,7 +32,7 @@ function onFileInputChange(ev) {
 
 function onAddLine() {
     document.querySelector("#text-edit-add").innerHTML = `
-    <input class="btn btn-primary" id="text-drag-middle" value="Drag" type="button" onclick="onDragButton(this)" />
+    <input class="btn btn-primary btn-sm" id="text-drag-middle" value="Drag" type="button" onclick="onDragButton(this)" />
     <br>
     <input class="text-edit-middle" placeholder="Middle Text" type="text" onkeyup="onTypeText(this)" /> `
 }

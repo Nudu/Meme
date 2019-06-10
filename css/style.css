@@ -11,7 +11,6 @@ canvas {
     width: 60%;
     height: auto;
     margin: 0 auto;
-    /* padding: 0 15vw 0 15vw; */
 }
 
 .addLine {
@@ -71,10 +70,16 @@ canvas {
         margin: 0 auto;
         flex-grow: 0;
     }
+    canvas {
+        width: 70%;
+    }
     .text-edit {
         display: flex;
         margin: 0 auto;
         flex-wrap: wrap;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 20% 0 20%;
     }
 }
 
