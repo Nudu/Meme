@@ -95,8 +95,8 @@ function dragText(txt, x, y) {
         }
         if (gSelectedDrag === 1) {
             if (gMeme.txts[2].location[0] !== 0 && gMeme.txts[0].location[0] !== 0) {
-                ctx.fillText(gMeme.txts[0].line, gMeme.txts[1].location[0], gMeme.txts[0].location[1]);
-                ctx.strokeText(gMeme.txts[0].line, gMeme.txts[1].location[0], gMeme.txts[0].location[1]);
+                ctx.fillText(gMeme.txts[0].line, gMeme.txts[0].location[0], gMeme.txts[0].location[1]);
+                ctx.strokeText(gMeme.txts[0].line, gMeme.txts[0].location[0], gMeme.txts[0].location[1]);
                 ctx.fillText(gMeme.txts[2].line, gMeme.txts[2].location[0], gMeme.txts[2].location[1]);
                 ctx.strokeText(gMeme.txts[2].line, gMeme.txts[2].location[0], gMeme.txts[2].location[1]);
             }
@@ -120,6 +120,7 @@ function dragText(txt, x, y) {
             }
         }
         if (gSelectedDrag === 2) {
+            // debugger
             if (gMeme.txts[1].location[0] !== 0 && gMeme.txts[0].location[0] !== 0) {
                 ctx.fillText(gMeme.txts[0].line, gMeme.txts[0].location[0], gMeme.txts[0].location[1]);
                 ctx.strokeText(gMeme.txts[0].line, gMeme.txts[0].location[0], gMeme.txts[0].location[1]);
@@ -232,16 +233,16 @@ function onChangeColor(element) {
         gMeme.selectedBorderColor = element.value;
     }
     setupCanvas()
-    if (gMeme.txts[1].location[0] !== 0 && gMeme.txts[0].location[0] !== 0) {
+    if (gMeme.txts[1].location[0] !== 0 && gMeme.txts[0].location[0] !== 0 && gMeme.txts[2].location[0] !== 0) {
+        txtSaved()
+    }
+    else if (gMeme.txts[1].location[0] !== 0 && gMeme.txts[0].location[0] !== 0) {
         ctx.fillText(gMeme.txts[0].line, gMeme.txts[0].location[0], gMeme.txts[0].location[1]);
         ctx.strokeText(gMeme.txts[0].line, gMeme.txts[0].location[0], gMeme.txts[0].location[1]);
         ctx.fillText(gMeme.txts[1].line, gMeme.txts[1].location[0], gMeme.txts[1].location[1]);
         ctx.strokeText(gMeme.txts[1].line, gMeme.txts[1].location[0], gMeme.txts[1].location[1]);
         ctx.fillText(gMeme.txts[2].line, canvas.width / 2, canvas.height - (canvas.height / 2.5));
         ctx.strokeText(gMeme.txts[2].line, canvas.width / 2, canvas.height - (canvas.height / 2.5));
-    }
-    else if (gMeme.txts[1].location[0] !== 0 && gMeme.txts[0].location[0] !== 0 && gMeme.txts[2].location[0] !== 0) {
-        txtSaved()
     }
     else if (gMeme.txts[0].location[0] !== 0) {
         txtSavedTop()
