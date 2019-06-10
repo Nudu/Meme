@@ -26,6 +26,11 @@ canvas {
     justify-content: center;
 }
 
+.text-add {
+    display: flex;
+    margin: 0 auto;
+}
+
 .text-edit {
     display: flex;
     margin: 0 auto;

@@ -4,10 +4,10 @@ var ctx;
 
 let gSelectedDrag = 0;
 let gIsMouseClicked = false;
-let gChoosenFont = '70px Impact'
-let gFillColor = "#FFFFFF";
-let gOutlineColor = "#000000"
-let gSelectedImgSrc = gImgs[0].url
+// let gChoosenFont = '70px Impact'
+// let gFillColor = "#FFFFFF";
+// let gOutlineColor = "#000000"
+// let gSelectedImgSrc = gImgs[0].url
 
 function init() {
     canvas = document.getElementById('myCanvas');
@@ -27,7 +27,7 @@ function onAddLine() {
 
 function renderPic() {
     var image = new Image();
-    image.src = gSelectedImgSrc
+    image.src = gMeme.selectedImgId
     image.crossOrigin = 'anonymous';
     renderCanvas(image)
 }
@@ -40,7 +40,7 @@ function handleImageFromInput(ev, onImageReady) {
         var img = new Image();
         img.onload = onImageReady.bind(null, img)
         img.src = event.target.result;
-        gSelectedImgSrc = img.src
+        gMeme.selectedImgId = img.src
     }
     reader.readAsDataURL(ev.target.files[0]);
 }
@@ -67,7 +67,6 @@ function dragText(txt, x, y) {
         ctx.strokeText(txt, x, y);
         gMeme.txts[gSelectedDrag].location = [x, y]
         if (gSelectedDrag === 0) {
-            // debugger
             if (gMeme.txts[2].location[0] !== 0 && gMeme.txts[1].location[0] !== 0) {
                 ctx.fillText(gMeme.txts[1].line, gMeme.txts[1].location[0], gMeme.txts[1].location[1]);
                 ctx.strokeText(gMeme.txts[1].line, gMeme.txts[1].location[0], gMeme.txts[1].location[1]);
@@ -120,7 +119,6 @@ function dragText(txt, x, y) {
             }
         }
         if (gSelectedDrag === 2) {
-            // debugger
             if (gMeme.txts[1].location[0] !== 0 && gMeme.txts[0].location[0] !== 0) {
                 ctx.fillText(gMeme.txts[0].line, gMeme.txts[0].location[0], gMeme.txts[0].location[1]);
                 ctx.strokeText(gMeme.txts[0].line, gMeme.txts[0].location[0], gMeme.txts[0].location[1]);
@@ -188,6 +186,9 @@ function onTypeText(text) {
         if (gMeme.txts[1].location[0] !== 0 && gMeme.txts[0].location[0] !== 0) {
             txtSaved()
         }
+        else if (gMeme.txts[0].location[0] !== 0) {
+            txtSavedTop()
+        }
         else if (gMeme.txts[1].location[0] !== 0) {
             txtSavedBot()
         }
@@ -202,6 +203,9 @@ function onTypeText(text) {
         setupCanvas()
         if (gMeme.txts[1].location[0] !== 0 && gMeme.txts[0].location[0] !== 0) {
             txtSaved()
+        }
+        else if (gMeme.txts[0].location[0] !== 0) {
+            txtSavedTop()
         }
         else if (gMeme.txts[1].location[0] !== 0) {
             txtSavedBot()
@@ -224,6 +228,11 @@ function downloadCanvas(elLink) {
     const data = canvas.toDataURL()
     elLink.href = data
     elLink.download = 'my-img.jpg'
+}
+
+function onSetFontSize(ev){
+    console.log('Font Size: ', ev.value)
+    gMeme.selectedFontSize = ev.value
 }
 
 function onChangeColor(element) {
@@ -264,7 +273,9 @@ function setupCanvas() {
     ctx.textBaseline = 'middle';
     ctx.textAlign = "center";
     ctx.lineWidth = 2;
-    ctx.font = gChoosenFont;
+    ctx.font =  gMeme.selectedFontSize +'px '+ gMeme.selectedFont;
+    // console.log(gMeme.selectedFontSize +'px '+ gMeme.selectedFont)
+    // ctx.font = gMeme.selectedFontSize +'px'+ gMeme.selectedFont;
 }
 
 function txtDefault() {

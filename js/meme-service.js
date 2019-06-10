@@ -3,39 +3,31 @@
 
 var gImgs = [{ id: 1, url: 'img/2.jpg', keywords: ['happy'] }];
 var gMeme = {
-    selectedImgId: 0,
+    selectedImgId: gImgs[0].url,
     selectedColor: '#FFFFFF',
-    selectedBorderColor:'#000000',
+    selectedBorderColor: '#000000',
+    selectedFont: 'Impact',
+    selectedFontSize: 70,
+    selectedAlign: 'center',
+    selectedLineSize: 2,
     txts: [
         {
             line: '',
-            linesize: 2,
-            align: 'center',
-            color: '#FFFFFF',
-            bordercolor: '#000000',
-            font: 'Impact',
-            fontSize: '70px',
             location: [0],
+            selectedColor: '#FFFFFF',
+            selectedBorderColor: '#000000',
         },
         {
             line: '',
-            linesize: 2,
-            align: 'center',
-            color: '#FFFFFF',
-            bordercolor: '#000000',
-            font: 'Impact',
-            fontSize: '70px',
             location: [0],
+            selectedColor: '#FFFFFF',
+            selectedBorderColor: '#000000',
         },
         {
             line: '',
-            linesize: 2,
-            align: 'center',
-            color: '#FFFFFF',
-            bordercolor: '#000000',
-            font: 'Impact',
-            fontSize: '70px',
             location: [0],
+            selectedColor: '#FFFFFF',
+            selectedBorderColor: '#000000',
         },
     ]
 }

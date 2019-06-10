@@ -19,13 +19,20 @@
     <br>
     <div class="user-input">
         <div class="fill-color">
-            choose fill color:
+            Fill color:
             <input type="color" value="#FFFFFF" id="fill" onchange="onChangeColor(this)">
-            choose outline color:
+            Outline color:
             <input type="color" value="#000000" id="outline" onchange="onChangeColor(this)">
-            <input class="text-add" value="Add Line" type="button" onclick="onAddLine()" />
+            <select name="fonts" onchange="onUpdateFont()">
+                <option value="Impact">Impact</option>
+                <option value="Roboto">Roboto (WIP) </option>
+                <option value="tahoma">Tahoma (WIP)</option>
+                <option value="Helvetica ">Helvetica (WIP)</option>
+            </select>
+            <input class="text-font-size" placeholder="Font Size" type="number" onchange="onSetFontSize(this)" />
         </div>
         <br>
+        <input class="text-add" value="Add Line" type="button" onclick="onAddLine()" />
         <div class="text-edit">
             <input class="text-drag-top" value="Drag" type="button" onclick="onDragButton(this)" />
             <input class="text-edit-top" placeholder="Top Text" type="text" onkeyup="onTypeText(this)" />
