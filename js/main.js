@@ -97,12 +97,24 @@ function dragText(txt, x, y) {
         ctx.strokeText(txt, x, y);
         gMeme.txts[gSelectedDrag].location = [x, y]
         if (gSelectedDrag === 0) {
-            ctx.fillText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height / 9));
-            ctx.strokeText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height / 9));
+            if (gMeme.txts[1].location[0] !== 0) {
+                ctx.fillText(gMeme.txts[1].line, gMeme.txts[1].location[0], gMeme.txts[1].location[1]);
+                ctx.strokeText(gMeme.txts[1].line, gMeme.txts[1].location[0], gMeme.txts[1].location[1]);
+            }
+            else {
+                ctx.fillText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height / 9));
+                ctx.strokeText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height / 9));
+            }
         }
         if (gSelectedDrag === 1) {
-            ctx.fillText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
-            ctx.strokeText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
+            if (gMeme.txts[0].location[0] !== 0) {
+                ctx.fillText(gMeme.txts[0].line, gMeme.txts[0].location[0], gMeme.txts[0].location[1]);
+                ctx.strokeText(gMeme.txts[0].line, gMeme.txts[0].location[0], gMeme.txts[0].location[1]);
+            }
+            else {
+                ctx.fillText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
+                ctx.strokeText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
+            }
         }
     }
 }
