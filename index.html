@@ -13,10 +13,10 @@
 <body onload="init()">
 
     <img src="img/2.jpg" style="display: none">
-
-    <input class="file-upload" type="file" name="image" onchange="onFileInputChange(event)" />
-    <hr>
-    <br>
+    <!-- <select class="langselect" onchange="onSetLang(this.value)">
+            <option data-trans="lang-choose-en" value="en">English</option>
+            <option data-trans="lang-choose-he" value="he">עברית</option>
+        </select> -->
     <div class="user-input">
         <div class="fill-color">
             Fill color:
@@ -29,28 +29,32 @@
                 <option value="Tahoma">Tahoma</option>
                 <option value="Verdana ">Verdana</option>
             </select>
-            <input class="text-font-size" id="fontsize" type="range" name="Font Size" min="0" max="120" oninput="onSetFontSize(this)" />
+            <input class="text-font-size" id="fontsize" type="range" name="Font Size" min="0" max="120"
+                oninput="onSetFontSize(this)" />
         </div>
+        <input class="file-upload" type="file" name="image" onchange="onFileInputChange(event)" />
         <br>
-        <input class="text-add" value="Add Line" type="button" onclick="onAddLine()" />
         <div class="text-edit">
-            <input class="text-drag-top" value="Edit" type="button" onclick="onDragButton(this)" />
+            <input class="btn btn-success addLine" value="Add Line" type="button" onclick="onAddLine()" /> <br>
+            <input class="btn btn-primary" id="text-drag-top" value="Drag" type="button" onclick="onDragButton(this)" />
             <input class="text-edit-top" placeholder="Top Text" type="text" onkeyup="onTypeText(this)" />
-            <span id="text-edit-add"></span>
-            <input class="text-drag-buttom" value="Edit" type="button" onclick="onDragButton(this)" />
+            <input class="btn btn-primary" id="text-drag-buttom" value="Drag" type="button"
+                onclick="onDragButton(this)" />
             <input class="text-edit-buttom" placeholder="Buttom Text" type="text" onkeyup="onTypeText(this)" />
+            <br>
+            <span id="text-edit-add"></span>
         </div>
         <br>
         <canvas onmouseout="onStopDraw()" onmousedown="onStartDraw()" onmouseup="onStopDraw()"
             onmousemove="onDraw(event)" id="myCanvas"></canvas>
 
-        <br>
 
-        <!-- <input class="text-add" value="Download" type="button" onclick="downloadCanvas(this)" /> -->
 
-        <a class="file-download" href="#" onclick="onDownloadCanvas(this)" download="my-img.jpg">
+        <input class="btn btn-warning file-download" value="Download" type="button" onclick="downloadCanvas(this)" />
+
+        <!-- <a class="file-download" href="#" onclick="onDownloadCanvas(this)" download="my-img.jpg">
             Download
-        </a>
+        </a> -->
 
 
 

@@ -2,6 +2,7 @@
 var canvas;
 var ctx;
 
+let gCurrLang = 'en'
 let gSelectedDrag = 0;
 let gIsMouseClicked = false;
 
@@ -12,6 +13,18 @@ function init() {
     renderPic()
 }
 
+function onSetLang(lang) {
+    setLang(lang);
+    if (lang === 'he') document.body.classList.add('rtl');
+    else document.body.classList.remove('rtl');
+    init()
+    doTrans();
+}
+
+function setLang(lang) {
+    gCurrLang = lang;
+}
+
 //When Choosing a new picture from the PC
 function onFileInputChange(ev) {
     handleImageFromInput(ev, renderCanvas)
@@ -19,7 +32,8 @@ function onFileInputChange(ev) {
 
 function onAddLine() {
     document.querySelector("#text-edit-add").innerHTML = `
-    <input class="text-drag-middle" value="Edit" type="button" onclick="onDragButton(this)" />
+    <input class="btn btn-primary" id="text-drag-middle" value="Drag" type="button" onclick="onDragButton(this)" />
+    <br>
     <input class="text-edit-middle" placeholder="Middle Text" type="text" onkeyup="onTypeText(this)" /> `
 }
 
@@ -174,13 +188,13 @@ function dragText(txt, x, y) {
 
 //Switching beetwin dragging different text lines.
 function onDragButton(ev) {
-    if (ev.className === 'text-drag-top') {
+    if (ev.id === 'text-drag-top') {
         gSelectedDrag = 0
     }
-    if (ev.className === 'text-drag-buttom') {
+    if (ev.id === 'text-drag-buttom') {
         gSelectedDrag = 1
     }
-    if (ev.className === 'text-drag-middle') {
+    if (ev.id === 'text-drag-middle') {
         gSelectedDrag = 2
     }
 
@@ -247,7 +261,7 @@ function onTypeText(text) {
 function onDownloadCanvas(elLink) {
     const data = canvas.toDataURL()
     elLink.href = data
-    elLink.download = 'my-img.jpg'
+    elLink.download = 'Meme.jpg'
 }
 
 function onSetFontSize(ev) {
@@ -348,6 +362,7 @@ function setupCanvasSettings() {
     ctx.font = gMeme.selectedFontSize + 'px ' + gMeme.selectedFont;
 }
 
+//Render the 3 Lines - each in its default location
 function renderTxtDefaultLoc() {
     ctx.fillText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
     ctx.strokeText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
@@ -356,6 +371,7 @@ function renderTxtDefaultLoc() {
     ctx.fillText(gMeme.txts[2].line, canvas.width / 2, canvas.height - (canvas.height / 2.5));
     ctx.strokeText(gMeme.txts[2].line, canvas.width / 2, canvas.height - (canvas.height / 2.5));
 }
+//Render the 3 Lines - 2 in its default location and buttom as its saved location
 function renderTxtSavedBot() {
     ctx.fillText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
     ctx.strokeText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
@@ -364,6 +380,8 @@ function renderTxtSavedBot() {
     ctx.fillText(gMeme.txts[2].line, canvas.width / 2, canvas.height - (canvas.height / 2.5));
     ctx.strokeText(gMeme.txts[2].line, canvas.width / 2, canvas.height - (canvas.height / 2.5));
 }
+
+//Render the 3 Lines - 2 in its default location and middle as its saved location
 function renderTxtSavedMid() {
     ctx.fillText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
     ctx.strokeText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
@@ -372,6 +390,8 @@ function renderTxtSavedMid() {
     ctx.fillText(gMeme.txts[2].line, gMeme.txts[2].location[0], gMeme.txts[2].location[1]);
     ctx.strokeText(gMeme.txts[2].line, gMeme.txts[2].location[0], gMeme.txts[2].location[1]);
 }
+
+//Render the 3 Lines - 2 in its default location and top as its saved location
 function renderTxtSavedTop() {
     ctx.fillText(gMeme.txts[0].line, gMeme.txts[0].location[0], gMeme.txts[0].location[1]);
     ctx.strokeText(gMeme.txts[0].line, gMeme.txts[0].location[0], gMeme.txts[0].location[1]);
@@ -380,6 +400,8 @@ function renderTxtSavedTop() {
     ctx.fillText(gMeme.txts[2].line, canvas.width / 2, canvas.height - (canvas.height / 2.5));
     ctx.strokeText(gMeme.txts[2].line, canvas.width / 2, canvas.height - (canvas.height / 2.5));
 }
+
+//Render the 3 Lines all in their saved locations
 function renderTxtSavedLoc() {
     ctx.fillText(gMeme.txts[0].line, gMeme.txts[0].location[0], gMeme.txts[0].location[1]);
     ctx.strokeText(gMeme.txts[0].line, gMeme.txts[0].location[0], gMeme.txts[0].location[1]);

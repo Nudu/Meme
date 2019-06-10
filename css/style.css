@@ -1,6 +1,8 @@
+@import url(../lib/bs4/css/bootstrap.min.css);
 body {
     margin: 0px;
     padding: 0px;
+    box-sizing: border-box;
 }
 
 canvas {
@@ -11,8 +13,13 @@ canvas {
     margin: 0 auto;
 }
 
-.fill-color {
+.addLine {
     display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.fill-color {
     justify-content: center;
 }
 
@@ -23,6 +30,7 @@ canvas {
 
 .file-download {
     display: flex;
+    margin: 0 auto;
     justify-content: center;
 }
 
@@ -53,31 +61,45 @@ canvas {
 }
 
 @media (max-width: 760px) {
-    body {
+    /* body {
         background-color: lightsalmon;
+    } */
+    .fill-color {
+        flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        flex-grow: 0;
     }
-    /* .first-paragraph {
-        margin: 0 0 1.5625rem;
+    .text-edit {
+        display: flex;
+        margin: 0 auto;
+        flex-wrap: wrap;
     }
-    .second-paragraph {
-        margin: 0 0 2.25rem;
-    }
-*/
 }
 
 @media (min-width: 760px) {
-    body {
+    /* body {
         background-color: lightblue;
-    }
-    /* .artical img {
-        margin-right: 5rem;
     } */
+    .text-edit {
+        display: flex;
+        margin: 0 auto;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 35vw 0 35vw
+    }
+    .fill-color {
+        display: flex;
+        margin: 0 auto;
+        justify-content: center;
+    }
 }
 
 @media (min-width: 1060px) {
-    body {
+    /* body {
         background-color: yellow;
-    }
+    } */
     /* .container {
         padding-right: 0px;
         padding-left: 0px;
