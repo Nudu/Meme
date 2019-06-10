@@ -2,6 +2,7 @@
 var canvas;
 var ctx;
 
+let gSelectedDrag = 0;
 let gIsMouseClicked = false;
 let gChoosenFont = '70px Impact'
 let gFillColor = "#FFFFFF";
@@ -53,26 +54,68 @@ function onDraw(ev) {
     dragText('text', offsetX, offsetY)
 }
 
+// function checkClickedLine(ev) {
+//     const x = ev.offsetX
+//     const y = ev.offsetY
+
+//     const clickedLine = gCelebs.find(celeb => {
+//         return (
+//             celeb.x <= x &&
+//             celeb.x + BAR_WIDTH >= x &&
+//             celeb.y <= y &&
+//             celeb.y + (HEIGHT_FACTOR * celeb.rate) >= y
+//         )
+//     })
+
+//     const elModal = document.querySelector('.modal');
+//     if (!clickedLine) {
+//         elModal.style.display = 'none'
+//         return
+//     }
+//     elModal.style.display = 'block'
+//     elModal.style.top = ev.pageX
+//     elModal.style.left = ev.pageY
+
+//     document.querySelector('#celeb-name').innerText = clickedLine.name;
+//     document.querySelector('#celeb-rate').innerText = clickedLine.rate;
+
+
+//     console.log(clickedLine)
+// }
+
 function dragText(txt, x, y) {
     if (gIsMouseClicked) {
         hardCodePic()
-        var txt = gMeme.txts[0].line
-        ctx.fillStyle = gMeme.txts[0].color
-        ctx.strokeStyle = gMeme.txts[0].bordercolor
+        var txt = gMeme.txts[gSelectedDrag].line
+        ctx.fillStyle = gMeme.txts[gSelectedDrag].color
+        ctx.strokeStyle = gMeme.txts[gSelectedDrag].bordercolor
         ctx.textBaseline = 'middle';
-        ctx.textAlign = gMeme.txts[0].align;
+        ctx.textAlign = gMeme.txts[gSelectedDrag].align;
         ctx.lineWidth = 2;
         ctx.font = gChoosenFont;
         ctx.fillText(txt, x, y);
         ctx.strokeText(txt, x, y);
-        gText1Location = [x, y]
-        // ctx.fillText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
-        // ctx.strokeText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
-        ctx.fillText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height / 9));
-        ctx.strokeText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height / 9));
+        gMeme.txts[gSelectedDrag].location = [x, y]
+        if (gSelectedDrag === 0) {
+            ctx.fillText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height / 9));
+            ctx.strokeText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height / 9));
+        }
+        if (gSelectedDrag === 1) {
+            ctx.fillText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
+            ctx.strokeText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
+        }
     }
 }
 
+function onDragButton(ev) {
+    if (ev.className === 'text-drag-top') {
+        gSelectedDrag = 0
+    }
+    if (ev.className === 'text-drag-buttom') {
+        gSelectedDrag = 1
+    }
+
+}
 
 function onTypeText(text) {
     if (text.className === 'text-edit-top') {
@@ -85,9 +128,9 @@ function onTypeText(text) {
         ctx.textAlign = "center";
         ctx.lineWidth = 2;
         ctx.font = gChoosenFont;
-        if (gText1Location) {
-            ctx.fillText(gMeme.txts[0].line, gText1Location[0], gText1Location[1]);
-            ctx.strokeText(gMeme.txts[0].line, gText1Location[0], gText1Location[1]);
+        if (gMeme.txts[0].location[0] !== 0) {
+            ctx.fillText(gMeme.txts[0].line, gMeme.txts[0].location[0], gMeme.txts[0].location[1]);
+            ctx.strokeText(gMeme.txts[0].line, gMeme.txts[0].location[0], gMeme.txts[0].location[1]);
         }
         else {
             ctx.fillText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
@@ -107,9 +150,9 @@ function onTypeText(text) {
         ctx.textAlign = "center";
         ctx.lineWidth = 2;
         ctx.font = gChoosenFont;
-        if (gText2Location) {
-            ctx.fillText(gMeme.txts[1].line, gText2Location[0], gText2Location[1]);
-            ctx.strokeText(gMeme.txts[1].line, gText2Location[0], gText2Location[1]);
+        if (gMeme.txts[1].location[0] !== 0) {
+            ctx.fillText(gMeme.txts[1].line, gMeme.txts[1].location[0], gMeme.txts[1].location[1]);
+            ctx.strokeText(gMeme.txts[1].line, gMeme.txts[1].location[0], gMeme.txts[1].location[1]);
         }
 
         else {
@@ -144,11 +187,12 @@ function onChangeColor(element) {
     ctx.fillStyle = gMeme.txts[0].color
     ctx.strokeStyle = gMeme.txts[0].bordercolor
     ctx.font = gChoosenFont;
-    if (gText1Location && gText2Location) {
-        ctx.fillText(gMeme.txts[0].line, gText1Location[0], gText1Location[1]);
-        ctx.strokeText(gMeme.txts[0].line, gText1Location[0], gText1Location[1]);
-        ctx.fillText(gMeme.txts[1].line, gText2Location[0], gText2Location[1]);
-        ctx.strokeText(gMeme.txts[1].line, gText2Location[0], gText2Location[1]);
+    if (gMeme.txts[0].location[0] !== 0) {
+        // && gMeme.txts[1].location[0] !== 0
+        ctx.fillText(gMeme.txts[0].line, gMeme.txts[0].location[0], gMeme.txts[0].location[1]);
+        ctx.strokeText(gMeme.txts[0].line, gMeme.txts[0].location[0], gMeme.txts[0].location[1]);
+        ctx.fillText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height / 9));
+        ctx.strokeText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height / 9));
     }
     else {
         ctx.fillText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);

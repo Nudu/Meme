@@ -16,6 +16,7 @@ var gMeme = {
             bordercolor: '#000000',
             font: 'Impact',
             fontSize: '70px',
+            location: [0],
         },
         {
             line: '',
@@ -25,6 +26,7 @@ var gMeme = {
             bordercolor: '#000000',
             font: 'Impact',
             fontSize: '70px',
+            location: [0],
         }
     ]
 }
