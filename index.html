@@ -23,21 +23,21 @@
             <input type="color" value="#FFFFFF" id="fill" onchange="onChangeColor(this)">
             Outline color:
             <input type="color" value="#000000" id="outline" onchange="onChangeColor(this)">
-            <select name="fonts" onchange="onUpdateFont()">
+            <select name="fonts" id="font" onchange="onUpdateFont(this)">
                 <option value="Impact">Impact</option>
-                <option value="Roboto">Roboto (WIP) </option>
-                <option value="tahoma">Tahoma (WIP)</option>
-                <option value="Helvetica ">Helvetica (WIP)</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Tahoma">Tahoma</option>
+                <option value="Verdana ">Verdana</option>
             </select>
-            <input class="text-font-size" placeholder="Font Size" type="number" onchange="onSetFontSize(this)" />
+            <input class="text-font-size" id="fontsize" type="range" name="Font Size" min="0" max="120" oninput="onSetFontSize(this)" />
         </div>
         <br>
         <input class="text-add" value="Add Line" type="button" onclick="onAddLine()" />
         <div class="text-edit">
-            <input class="text-drag-top" value="Drag" type="button" onclick="onDragButton(this)" />
+            <input class="text-drag-top" value="Edit" type="button" onclick="onDragButton(this)" />
             <input class="text-edit-top" placeholder="Top Text" type="text" onkeyup="onTypeText(this)" />
             <span id="text-edit-add"></span>
-            <input class="text-drag-buttom" value="Drag" type="button" onclick="onDragButton(this)" />
+            <input class="text-drag-buttom" value="Edit" type="button" onclick="onDragButton(this)" />
             <input class="text-edit-buttom" placeholder="Buttom Text" type="text" onkeyup="onTypeText(this)" />
         </div>
         <br>
@@ -48,7 +48,7 @@
 
         <!-- <input class="text-add" value="Download" type="button" onclick="downloadCanvas(this)" /> -->
 
-        <a class="file-download" href="#" onclick="downloadCanvas(this)" download="my-img.jpg">
+        <a class="file-download" href="#" onclick="onDownloadCanvas(this)" download="my-img.jpg">
             Download
         </a>
 

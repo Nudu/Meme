@@ -1,5 +1,6 @@
 'use strict'
-
+let gCanvasWidth = null;
+let gCanvasHeight = null;
 
 var gImgs = [{ id: 1, url: 'img/2.jpg', keywords: ['happy'] }];
 var gMeme = {
@@ -12,22 +13,34 @@ var gMeme = {
     selectedLineSize: 2,
     txts: [
         {
-            line: '',
+            line: 'Top',
             location: [0],
+            locationx: 0,
+            locationy: 0,
             selectedColor: '#FFFFFF',
             selectedBorderColor: '#000000',
+            selectedFont: 'Impact',
+            selectedFontSize: 70,
         },
         {
-            line: '',
+            line: 'Buttom',
             location: [0],
+            locationx: 0,
+            locationy: 0,
             selectedColor: '#FFFFFF',
             selectedBorderColor: '#000000',
+            selectedFont: 'Impact',
+            selectedFontSize: 70,
         },
         {
-            line: '',
+            line: 'Middle',
             location: [0],
+            locationx: 0,
+            locationy: 0,
             selectedColor: '#FFFFFF',
             selectedBorderColor: '#000000',
+            selectedFont: 'Impact',
+            selectedFontSize: 70,
         },
     ]
 }
