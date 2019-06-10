@@ -8,9 +8,10 @@ body {
 canvas {
     display: flex;
     outline: 2px solid black;
-    width: 400;
-    height: 400;
+    width: 60%;
+    height: auto;
     margin: 0 auto;
+    /* padding: 0 15vw 0 15vw; */
 }
 
 .addLine {
@@ -25,7 +26,6 @@ canvas {
 
 .file-upload {
     display: flex;
-    margin: 0 auto;
 }
 
 .file-download {
