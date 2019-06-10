@@ -23,12 +23,13 @@
             <input type="color" value="#FFFFFF" id="fill" onchange="onChangeColor(this)">
             choose outline color:
             <input type="color" value="#000000" id="outline" onchange="onChangeColor(this)">
-            <!-- <input class="text-add" value="Add Line" type="button" onclick="onAddLine()" /> -->
+            <input class="text-add" value="Add Line" type="button" onclick="onAddLine()" />
         </div>
         <br>
         <div class="text-edit">
             <input class="text-drag-top" value="Drag" type="button" onclick="onDragButton(this)" />
             <input class="text-edit-top" placeholder="Top Text" type="text" onkeyup="onTypeText(this)" />
+            <span id="text-edit-add"></span>
             <input class="text-drag-buttom" value="Drag" type="button" onclick="onDragButton(this)" />
             <input class="text-edit-buttom" placeholder="Buttom Text" type="text" onkeyup="onTypeText(this)" />
         </div>

@@ -1,5 +1,4 @@
 'use strict'
-// var gKeywords = { 'happy': 12, 'funny puk': 1 }
 
 
 var gImgs = [{ id: 1, url: 'img/2.jpg', keywords: ['happy'] }];
@@ -27,7 +26,17 @@ var gMeme = {
             font: 'Impact',
             fontSize: '70px',
             location: [0],
-        }
+        },
+        {
+            line: '',
+            linesize: 2,
+            align: 'center',
+            color: '#FFFFFF',
+            bordercolor: '#000000',
+            font: 'Impact',
+            fontSize: '70px',
+            location: [0],
+        },
     ]
 }
 
