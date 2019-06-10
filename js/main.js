@@ -48,7 +48,7 @@ function onStopDraw() {
     gIsMouseClicked = false;
 }
 
-function draw(ev) {
+function onDraw(ev) {
     const { offsetX, offsetY } = ev
     dragText('text', offsetX, offsetY)
 }
@@ -141,5 +141,19 @@ function onChangeColor(element) {
     } else if (element.id === 'outline') {
         gMeme.txts[0].bordercolor = element.value;
     }
-    onTypeText()
+    ctx.fillStyle = gMeme.txts[0].color
+    ctx.strokeStyle = gMeme.txts[0].bordercolor
+    ctx.font = gChoosenFont;
+    if (gText1Location && gText2Location) {
+        ctx.fillText(gMeme.txts[0].line, gText1Location[0], gText1Location[1]);
+        ctx.strokeText(gMeme.txts[0].line, gText1Location[0], gText1Location[1]);
+        ctx.fillText(gMeme.txts[1].line, gText2Location[0], gText2Location[1]);
+        ctx.strokeText(gMeme.txts[1].line, gText2Location[0], gText2Location[1]);
+    }
+    else {
+        ctx.fillText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
+        ctx.strokeText(gMeme.txts[0].line, canvas.width / 2, canvas.height / 6);
+        ctx.fillText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height / 9));
+        ctx.strokeText(gMeme.txts[1].line, canvas.width / 2, canvas.height - (canvas.height / 9));
+    }
 }
