@@ -8,7 +8,6 @@ body {
 canvas {
     display: flex;
     outline: 2px solid black;
-    width: 60%;
     height: auto;
     margin: 0 auto;
 }
@@ -70,9 +69,6 @@ canvas {
         margin: 0 auto;
         flex-grow: 0;
     }
-    canvas {
-        width: 70%;
-    }
     .text-edit {
         display: flex;
         margin: 0 auto;
@@ -80,6 +76,9 @@ canvas {
         justify-content: center;
         flex-direction: column;
         padding: 0 20% 0 20%;
+    }
+    canvas {
+        width: 70%;
     }
 }
 
